@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EditAccountForm from "./EditAccountForm";
 import AvatarCard from "./AvatarCard";
 import ProfileInfoCard from "./ProfileInfoCard";
+import ActiveProjectsCard from "./ActiveProjectsCard";
 
 const initialUser = {
   username: "diyma_user",
@@ -36,6 +37,25 @@ function UserPage() {
     setEditAccount(false);
   }
 
+  function handleStatusChange(projectId) {
+    setProjects((prev) =>
+      prev.map((project) => {
+        if (projects.id === projectId) {
+          let newStatus;
+          if (project.status === "Not Started") {
+            newStatus = "In Progress";
+          } else if (project.status === "In Progress") {
+            newStatus = "Completed";
+          } else if (project.status === "Completed") {
+            newStatus = "On Hold";
+          }
+          return { ...project, status: newStatus };
+        }
+        return project;
+      })
+    );
+  }
+
   return (
     <div>
       <h1>User page</h1>
@@ -55,18 +75,10 @@ function UserPage() {
         <button>Delete project</button>
       </div>
 
-      <div>
-        <div>
-          <h3>Active projects</h3>
-          <h3>Status</h3>
-        </div>
-        {projects.map((project) => (
-          <div key={project.id}>
-            <span>{project.name}</span>
-            <button>{project.status}</button>
-          </div>
-        ))}
-      </div>
+      <ActiveProjectsCard
+        projects={projects}
+        onStatusChange={handleStatusChange}
+      />
 
       <div>Share your project</div>
 
