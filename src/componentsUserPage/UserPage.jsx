@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import EditAccountForm from "./componentsUserPage/EditAccountForm";
+import EditAccountForm from "./EditAccountForm";
+import AvatarCard from "./AvatarCard";
 
 const initialUser = {
   username: "diyma_user",
   email: "diyma_user@fake.com",
+  phoneNumber: "555-555-5555",
 };
 
 const initialProjects = [
