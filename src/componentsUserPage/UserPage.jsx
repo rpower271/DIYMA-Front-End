@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditAccountForm from "./EditAccountForm";
 import AvatarCard from "./AvatarCard";
+import ProfileInfoCard from "./ProfileInfoCard";
 
 const initialUser = {
   username: "diyma_user",
@@ -42,25 +43,10 @@ function UserPage() {
       <div>Nav Bar</div>
 
       <div>
-        <div>
-          <div>Avatar</div>
-          <button onClick={handleEditAccount}>Edit account</button>
-        </div>
+        <AvatarCard user={user} onEditAccount={handleEditAccount} />
 
         <div>
-          <h3>Profile info</h3>
-          <p>
-            <strong>Username:</strong> {user.username}
-          </p>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p>
-            <strong>Phone number:</strong> {user.phoneNumber}
-          </p>
-          <p>
-            <strong>Project count:</strong> {projectsAdded}
-          </p>
+          <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
         </div>
       </div>
 
