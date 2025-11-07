@@ -40,7 +40,7 @@ function UserPage() {
   function handleStatusChange(projectId) {
     setProjects((prev) =>
       prev.map((project) => {
-        if (projects.id === projectId) {
+        if (project.id === projectId) {
           let newStatus;
           if (project.status === "Not Started") {
             newStatus = "In Progress";
@@ -48,6 +48,8 @@ function UserPage() {
             newStatus = "Completed";
           } else if (project.status === "Completed") {
             newStatus = "On Hold";
+          } else {
+            newStatus = "Not Started";
           }
           return { ...project, status: newStatus };
         }
