@@ -3,6 +3,7 @@ import EditAccountForm from "./EditAccountForm";
 import AvatarCard from "./AvatarCard";
 import ProfileInfoCard from "./ProfileInfoCard";
 import ActiveProjectsCard from "./ActiveProjectsCard";
+import ShareProjectsCard from "./ShareProjectsCard";
 
 const initialUser = {
   username: "diyma_user",
@@ -82,9 +83,7 @@ function UserPage() {
         onStatusChange={handleStatusChange}
       />
 
-      <div>Share your project</div>
-
-      <div>Footer</div>
+      <ShareProjectsCard projects={projects} />
 
       {editAccount && (
         <EditAccountForm
@@ -93,6 +92,7 @@ function UserPage() {
           onCancel={handleCancelEdit}
         />
       )}
+      <div>Footer</div>
     </div>
   );
 }
