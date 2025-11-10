@@ -2,23 +2,19 @@ import React from "react";
 
 function ProfileInfoCard({ user, projectsAdded }) {
   return (
-    <div>
-      <h3>Profile Information</h3>
-      <p>
-        <strong>Username: </strong>
-        {user.username}
+    <div className="border-2 border-black p-6 flex-1">
+      <h3 className="text-xl font-bold mb-4">Profile info</h3>
+      <p className="mb-2">
+        <strong>Username:</strong> {user.username}
       </p>
-      <p>
-        <strong>Email: </strong>
-        {user.email}
+      <p className="mb-2">
+        <strong>Email:</strong> {user.email}
       </p>
-      <p>
-        <strong>Phone number: </strong>
-        {user.phoneNumber}
+      <p className="mb-2">
+        <strong>Phone number:</strong> {user.phoneNumber}
       </p>
-      <p>
-        <strong>Number of projects: </strong>
-        {projectsAdded}
+      <p className="mb-2">
+        <strong>Project count:</strong> {projectsAdded}
       </p>
     </div>
   );
