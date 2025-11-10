@@ -1,9 +1,18 @@
+import { Routes, Route } from "react-router";
 import "./App.css";
+import Layout from "./Layout";
+import ProjectIdeas from "./components/ProjectIdeas/ProjectIdeas";
+
 
 function App() {
   return (
     <>
-      <div className="text-3xl font-bold text-blue-600">DIYMA</div>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="projects" element={<ProjectIdeas />} />
+          <Route path="*" element={<h1>404</h1>} />
+        </Route>
+      </Routes>
     </>
   );
 }
