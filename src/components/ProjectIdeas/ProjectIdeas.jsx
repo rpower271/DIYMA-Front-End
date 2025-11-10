@@ -1,6 +1,11 @@
+import Projects from "../Projects/Projects"
+
+
 function ProjectIdeas() {
   return (
-    <div>ProjectIdeas</div>
+    <div>
+      <Projects />
+    </div>
   )
 }
 
