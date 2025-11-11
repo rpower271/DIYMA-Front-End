@@ -22,14 +22,14 @@ export const listOfProjects = [
   },
   {
     id: 4,
-    title: "Mirror DIY",
+    title: "Mirror",
     description:
       "Turn a basic mirror into a statement piece by adding a handmade frame, LED lights, or decorative materials for a personalized touch.",
     coverimage: "public/images/Mirror.jpg",
   },
   {
     id: 5,
-    title: "Door DIY",
+    title: "Door",
     description:
       "Upgrade an old door with paint, panels, or hardware. This easy DIY improves both the look and function of any room or entryway.",
     coverimage: "public/images/Door.jpg",

@@ -3,7 +3,7 @@ function Project({ project }) {
     <li className="flex justify-between items-center border rounded-xl shadow-md p-4 mb-6 bg-white w-full max-w-2xl">
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold text-black-800">{project.title}</h2>
-        <p className="text-cyan-600 mt-1">{project.description}</p>
+        <p className="text-green-700 mt-1">{project.description}</p>
       </div>
 
       <img
