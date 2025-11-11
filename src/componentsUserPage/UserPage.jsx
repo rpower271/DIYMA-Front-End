@@ -5,6 +5,7 @@ import ProfileInfoCard from "./ProfileInfoCard";
 import ActiveProjectsCard from "./ActiveProjectsCard";
 import ShareProjectsCard from "./ShareProjectsCard";
 import CreateProjectCard from "./CreateProjectCard";
+import DeleteProjectCard from "./DeleteProjectCard";
 
 const initialUser = {
   username: "diyma_user",
@@ -47,6 +48,7 @@ function UserPage() {
   const [projects, setProjects] = useState(initialProjects);
   const [editAccount, setEditAccount] = useState(false);
   const [createProject, setCreateProject] = useState(false);
+  const [deleteProject, setDeleteProject] = useState(false);
   const projectsAdded = projects.length;
 
   function handleEditAccount() {
@@ -93,6 +95,21 @@ function UserPage() {
     setCreateProject(false);
   }
 
+  function handleDeleteProject() {
+    setDeleteProject(true);
+  }
+
+  function handleConfirmDelete(projectId) {
+    setProjects((prev) =>
+      prev.filter((project) => project.id !== parseInt(projectId))
+    );
+    setDeleteProject(false);
+  }
+
+  function handleCancelDelete() {
+    setDeleteProject(false);
+  }
+
   function handleStatusChange(projectId) {
     setProjects((prev) =>
       prev.map((project) => {
@@ -115,10 +132,12 @@ function UserPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <h1 className="text-3xl font-bold text-center py-6">User page</h1>
+    <div className="min-h-screen flex flex-col bg-amber-50">
+      <h1 className="text-3xl font-bold text-center py-6 text-slate-800">
+        User page
+      </h1>
 
-      <div className="border-2 border-black p-4 mb-6">Nav Bar</div>
+      {/* <div className="bg-slate-800 text-white p-4 mb-6">Nav Bar</div> */}
 
       <div className="max-w-7xl mx-auto px-4 w-full">
         <div className="flex gap-6 mb-6">
@@ -132,11 +151,14 @@ function UserPage() {
         <div className="flex gap-6 mb-6">
           <button
             onClick={handleCreateProject}
-            className="flex-1 border-2 border-black p-12 text-xl font-semibold"
+            className="flex-1 border-2 border-slate-800 text-slate-800 p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
           >
             Create project
           </button>
-          <button className="flex-1 border-2 border-black p-12 text-xl font-semibold">
+          <button
+            onClick={handleDeleteProject}
+            className="flex-1 border-2 border-slate-800 text-slate-800 p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
+          >
             Delete project
           </button>
         </div>
@@ -163,7 +185,14 @@ function UserPage() {
           onCancel={handleCancelCreate}
         />
       )}
-      <div className="border-2 border-black p-4 mt-auto">Footer</div>
+      {deleteProject && (
+        <DeleteProjectCard
+          projects={projects}
+          onDelete={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+        />
+      )}
+      {/* <div className="bg-slate-800 text-white p-4 mt-auto">Footer</div> */}
     </div>
   );
 }
