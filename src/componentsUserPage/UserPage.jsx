@@ -6,11 +6,13 @@ import ActiveProjectsCard from "./ActiveProjectsCard";
 import ShareProjectsCard from "./ShareProjectsCard";
 import CreateProjectCard from "./CreateProjectCard";
 import DeleteProjectCard from "./DeleteProjectCard";
+import EditProjectCard from "./EditProjectsCard";
 
 const initialUser = {
   username: "diyma_user",
   email: "diyma_user@fake.com",
   phoneNumber: "555-555-5555",
+  avatar: null,
 };
 
 const initialProjects = [
@@ -49,6 +51,7 @@ function UserPage() {
   const [editAccount, setEditAccount] = useState(false);
   const [createProject, setCreateProject] = useState(false);
   const [deleteProject, setDeleteProject] = useState(false);
+  const [editProject, setEditProject] = useState(null);
   const projectsAdded = projects.length;
 
   function handleEditAccount() {
@@ -65,6 +68,13 @@ function UserPage() {
 
   function handleCancelEdit() {
     setEditAccount(false);
+  }
+
+  function handleAvatarChange(imageUrl) {
+    setUser((prev) => ({
+      ...prev,
+      avatar: imageUrl,
+    }));
   }
 
   function handleCreateProject() {
@@ -110,6 +120,23 @@ function UserPage() {
     setDeleteProject(false);
   }
 
+  function handleEditProject(projectId) {
+    setEditProject(projectId);
+  }
+
+  function handleSaveEditProject(updateData) {
+    setProjects((prev) =>
+      prev.map((project) =>
+        project.id === editProject ? { ...project, ...updateData } : project
+      )
+    );
+    setEditProject(null);
+  }
+
+  function handleCancelEditProject() {
+    setEditProject(null);
+  }
+
   function handleStatusChange(projectId) {
     setProjects((prev) =>
       prev.map((project) => {
@@ -130,6 +157,9 @@ function UserPage() {
       })
     );
   }
+  const projectToEdit = editProject
+    ? projects.find((project) => project.id === editProject)
+    : null;
 
   return (
     <div className="min-h-screen flex flex-col bg-amber-50">
@@ -139,7 +169,11 @@ function UserPage() {
 
       <div className="max-w-7xl mx-auto px-4 w-full">
         <div className="flex gap-6 mb-6">
-          <AvatarCard user={user} onEditAccount={handleEditAccount} />
+          <AvatarCard
+            user={user}
+            onEditAccount={handleEditAccount}
+            onAvatarChange={handleAvatarChange}
+          />
 
           <div>
             <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
@@ -164,6 +198,7 @@ function UserPage() {
         <ActiveProjectsCard
           projects={projects}
           onStatusChange={handleStatusChange}
+          onEditProject={handleEditProject}
         />
 
         <ShareProjectsCard projects={projects} />
@@ -188,6 +223,14 @@ function UserPage() {
           projects={projects}
           onDelete={handleConfirmDelete}
           onCancel={handleCancelDelete}
+        />
+      )}
+
+      {editProject && projectToEdit && (
+        <EditProjectCard
+          project={projectToEdit}
+          onSave={handleSaveEditProject}
+          onCancel={handleCancelEditProject}
         />
       )}
     </div>

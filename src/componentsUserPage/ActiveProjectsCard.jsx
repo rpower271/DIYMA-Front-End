@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ActiveProjectsCard({ projects, onStatusChange }) {
+function ActiveProjectsCard({ projects, onStatusChange, onEditProject }) {
   const [expandedId, setExpandedId] = useState(null);
 
   function toggleExpand(projectId) {
@@ -51,6 +51,12 @@ function ActiveProjectsCard({ projects, onStatusChange }) {
                 <strong className="text-slate-800">Items Needed:</strong>{" "}
                 {project.itemsNeeded}
               </p>
+              <button
+                onClick={() => onEditProject(project.id)}
+                className="border-2 border-slate-800 text-slate-800 px-6 py-2 hover:bg-slate-800 hover:text-white transition"
+              >
+                Edit Project
+              </button>
             </div>
           )}
         </div>
