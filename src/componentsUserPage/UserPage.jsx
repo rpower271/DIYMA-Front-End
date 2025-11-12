@@ -137,8 +137,6 @@ function UserPage() {
         User page
       </h1>
 
-      {/* <div className="bg-slate-800 text-white p-4 mb-6">Nav Bar</div> */}
-
       <div className="max-w-7xl mx-auto px-4 w-full">
         <div className="flex gap-6 mb-6">
           <AvatarCard user={user} onEditAccount={handleEditAccount} />
@@ -192,7 +190,6 @@ function UserPage() {
           onCancel={handleCancelDelete}
         />
       )}
-      {/* <div className="bg-slate-800 text-white p-4 mt-auto">Footer</div> */}
     </div>
   );
 }

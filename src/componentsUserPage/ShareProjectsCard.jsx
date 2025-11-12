@@ -36,7 +36,7 @@ function ShareProjectsCard({ projects }) {
           <option value="">-- Choose a project --</option>
           {projects.map((project) => (
             <option key={project.id} value={project.id}>
-              {project.name}
+              {project.title}
             </option>
           ))}
         </select>
