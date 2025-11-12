@@ -36,6 +36,16 @@ function Navbar() {
           Project Ideas
         </NavLink>
         <NavLink
+          to="/forum"
+          className={({ isActive }) =>
+            `text-lg font-medium ${
+              isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
+            }`
+          }
+        >
+          Forum
+        </NavLink>
+        <NavLink
           to="/user"
           className={({ isActive }) =>
             `text-lg font-medium ${
