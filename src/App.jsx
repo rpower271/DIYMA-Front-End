@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router";
 import "./App.css";
 import Layout from "./Layout";
-import ProjectIdeas from "./components/ProjectIdeas/ProjectIdeas";
 import HomePage from "./components/HomePage/homePage";
 import Error404 from "./Error404";
+import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="projects" element={<ProjectIdeas />} />
+          <Route path="ideas" element={<IdeaProjects />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

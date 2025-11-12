@@ -50,7 +50,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div id="ideas-homepage">
-          <Link to={"/projects"} id="ideas-box">
+          <Link to={"/ideas"} id="ideas-box">
             All Ideas
           </Link>
           <img id="ideas-image" src="public/images/HP6.jpg" alt="Lightbuld" />

@@ -26,7 +26,7 @@ function Navbar() {
           Home
         </NavLink>
         <NavLink
-          to="/projects"
+          to="/Ideas"
           className={({ isActive }) =>
             `text-lg font-medium ${
               isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
