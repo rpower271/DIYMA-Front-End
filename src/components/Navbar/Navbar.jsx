@@ -36,7 +36,7 @@ function Navbar() {
           Project Ideas
         </NavLink>
         <NavLink
-          to="/user"
+          to="/userPage"
           className={({ isActive }) =>
             `text-lg font-medium ${
               isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"

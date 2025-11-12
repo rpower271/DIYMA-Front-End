@@ -2,7 +2,6 @@ form,
 main {
   display: grid;
   gap: 0.5rem;
-  justify-content: center;
 }
 
 label {
@@ -11,9 +10,12 @@ label {
 
 .register-form {
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin-top: 5ch;
   margin-bottom: 625px;
+  width: 30vw;
+  grid-column: 2/3;
 }
 
 input {
