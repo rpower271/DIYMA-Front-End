@@ -16,7 +16,7 @@ function Navbar() {
       {/* Navigation Links */}
       <nav className="flex space-x-6">
         <NavLink
-          to="/home"
+          to="/"
           className={({ isActive }) =>
             `text-lg font-medium ${
               isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
