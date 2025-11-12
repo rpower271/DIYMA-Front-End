@@ -3,6 +3,7 @@ footer {
   justify-content: center;
   align-content: center;
   box-shadow: 1px 4px 5px 3px;
+  position: relative;
 }
 
 .footer-links {
@@ -16,5 +17,4 @@ footer {
 
 li {
   padding-left: 2ch;
-  text-decoration: underline;
 }

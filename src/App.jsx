@@ -5,14 +5,16 @@ import Layout from "./Layout";
 import HomePage from "./components/HomePage/homePage";
 import Error404 from "./Error404";
 import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
+import Register from "./components/Auth/Register";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/UserPage" element={<UserPage />} />
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="register" element={<Register />} />
+          <Route path="/UserPage" element={<UserPage />} />
           <Route path="ideas" element={<IdeaProjects />} />
           <Route path="*" element={<Error404 />} />
         </Route>
