@@ -14,6 +14,7 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="/UserPage" element={<UserPage />} />
           <Route path="ideas" element={<IdeaProjects />} />
           <Route path="*" element={<Error404 />} />
