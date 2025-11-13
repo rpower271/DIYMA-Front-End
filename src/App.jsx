@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage/homePage";
 import Error404 from "./Error404";
 import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
 import Register from "./components/Auth/Register";
+import Login from "./Login";
 
 function App() {
   return (
