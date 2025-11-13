@@ -1,9 +1,18 @@
-import React from 'react'
+import SingleReplyItem from "./SingleReplyItem";
+import ReplyForm from "./ReplyForm";
 
-function ReplySection() {
+function ReplySection({ replies, onAddReply }) {
   return (
-    <div>ReplySection</div>
-  )
+    <div className="">
+      <h3 className="">Replies</h3>
+      <div className="">
+        {replies.map((reply) => (
+          <SingleReplyItem key={reply.id} reply={reply} />
+        ))}
+      </div>
+      <ReplyForm onSubmit={onAddReply} />
+    </div>
+  );
 }
 
-export default ReplySection
+export default ReplySection;
