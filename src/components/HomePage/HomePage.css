@@ -97,9 +97,10 @@ h2 {
 
 .description {
   text-align: center;
-  font-size: 1.2rem;
-  border-bottom: 3px double grey;
-  border-top: 3px double grey;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-bottom: 3px double dodgerblue;
+  border-top: 3px double dodgerblue;
   padding: 2ch;
   margin-top: 1ch;
 }
