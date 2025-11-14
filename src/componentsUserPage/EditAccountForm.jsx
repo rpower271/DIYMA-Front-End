@@ -20,9 +20,10 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
     }));
   }
   return (
-    <div className="fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center p-4">
-      <div className="bg-white border-2 border-slate-800 p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-slate-800">Edit Account</h2>
+    <div className="fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center p-4 z-50">
+      <div className="bg-white border-2 border-black w-full max-w-md">
+        <div className="p-8">
+        <h2 className="text-2xl font-bold mb-6 text-black">Edit Account</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2 font-semibold text-slate-900">
@@ -32,7 +33,8 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-black px-3 py-2 focus:outline-none"
+                style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -45,7 +47,8 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-black px-3 py-2 focus:outline-none"
+                style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -57,7 +60,8 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-black px-3 py-2 focus:outline-none"
+                style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -65,18 +69,19 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 hover:bg-slate-800 hover:text-white transition"
+              className="flex-1 border-2 border-black bg-white text-black px-6 py-2 hover:bg-black hover:text-white transition font-semibold"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 font-semibold hover:bg-slate-800 hover:text-white transition"
+              className="flex-1 border-2 border-black bg-white text-black px-6 py-2 hover:bg-black hover:text-white transition font-semibold"
             >
               Save
             </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );

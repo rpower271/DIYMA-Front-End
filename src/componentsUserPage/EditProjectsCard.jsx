@@ -49,7 +49,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               value={formData.title}
               onChange={handleChange}
               placeholder="Enter project title"
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -63,7 +64,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               onChange={handleChange}
               placeholder="Describe your project..."
               rows="4"
-              className="w-full border-2 border-slate-800 p-2 resize-none"
+              className="block w-full border-2 border-slate-800 p-2 resize-none"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -80,7 +82,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
                 value={formData.totalCost}
                 onChange={handleChange}
                 placeholder="0.00"
-                className="w-full border-2 border-slate-800 p-2"
+                className="block w-full border-2 border-slate-800 p-2"
+                style={{ maxWidth: "100%" }}
               />
             </div>
 
@@ -93,7 +96,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
                 type="date"
                 value={formData.plannedDueDate}
                 onChange={handleChange}
-                className="w-full border-2 border-slate-800 p-2"
+                className="block w-full border-2 border-slate-800 p-2"
+                style={{ maxWidth: "100%" }}
               />
             </div>
           </div>
@@ -108,7 +112,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               onChange={handleChange}
               placeholder="List items needed for this project..."
               rows="4"
-              className="w-full border-2 border-slate-800 p-2 resize-none"
+              className="block w-full border-2 border-slate-800 p-2 resize-none"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -120,7 +125,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
             >
               <option value="Not Started">Not Started</option>
               <option value="In Progress">In Progress</option>
