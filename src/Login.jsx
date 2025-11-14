@@ -59,7 +59,8 @@ function Login({ setToken, token }) {
               type="email"
               name="email"
               onChange={handleInput}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
               required
             />
           </div>
@@ -72,7 +73,8 @@ function Login({ setToken, token }) {
               type="password"
               name="password"
               onChange={handleInput}
-              className="w-full border-2 border-slate-800 p-2"
+              className="block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
               required
             />
           </div>
