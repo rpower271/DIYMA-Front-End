@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="forum" element={<ForumPage />} />
-          <Route path="projects" element={<ProjectIdeas />} />
           <Route index element={<HomePage />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
