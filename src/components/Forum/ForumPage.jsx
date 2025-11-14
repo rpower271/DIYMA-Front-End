@@ -1,12 +1,14 @@
 import { useState } from "react";
 import NewThreadForm from "./NewThreadForm";
 import ThreadCard from "./ThreadCard";
+import SearchBar from "./SearchBar";
 
 function ForumPage() {
   const [threads, setThreads] = useState([]);
 
   const [showNewThread, setShowNewThread] = useState(false);
   const [currentUser] = useState("CurrentUser");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleCreateThread = (title, content) => {
     const newThread = {
@@ -41,6 +43,10 @@ function ForumPage() {
     );
   };
 
+  const filteredThreads = threads.filter((thread) =>
+    thread.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen ">
       <div className="max-w-5xl mx-auto p-6">
@@ -64,14 +70,20 @@ function ForumPage() {
             onCancel={() => setShowNewThread(false)}
           />
         )}
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <div className="space-y-4">
-          {threads.map((thread) => (
+          {filteredThreads.map((thread) => (
             <ThreadCard
               key={thread.id}
               thread={thread}
               onAddReply={handleAddReply}
             />
           ))}
+          {filteredThreads.length === 0 && (
+            <div className="bg-white rounded-lg shadow-md p-6 text-center text-gray-500">
+              {searchTerm}
+            </div>
+          )}
         </div>
       </div>
     </div>
