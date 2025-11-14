@@ -13,7 +13,7 @@
 
 h1 {
   font-family: "Big Shoulders Stencil";
-  text-align: left;
+  text-align: center;
   font-weight: 700;
   font-size: 4rem;
   border-bottom: 3px double grey;
@@ -25,23 +25,23 @@ h2 {
 
 .LinksHP {
   border: 2px solid dodgerblue;
-  border-radius: 30px;
+  border-radius: 10px;
   color: dodgerblue;
   font-weight: 700;
-  background-color: beige;
+  background-color: #f5f5e6;
   margin-top: 2px;
   padding-left: 2ch;
   padding-right: 2ch;
   margin-bottom: 1ch;
 }
 
-#register-homepage {
+.register-homepage {
   font-size: larger;
   width: 50%;
   height: fit-content;
   text-align: center;
   padding: 1ch;
-  background-color: beige;
+  background-color: #f5f5e6;
   border-right: 2px double dodgerblue;
   border-left: 2px groove dodgerblue;
 }
@@ -76,10 +76,10 @@ h2 {
 }
 
 #ideas-box {
-  color: beige;
+  color: #f5f5e6;
   font-weight: 500;
   background-color: dodgerblue;
-  border: 2px solid beige;
+  border: 2px solid #f5f5e6;
   border-radius: 30px;
   padding-right: 2ch;
   padding-left: 2ch;
@@ -88,7 +88,7 @@ h2 {
 
 #ideas-box:hover {
   color: dodgerblue;
-  background-color: beige;
+  background-color: #f5f5e6;
 }
 
 #ideas-image {
@@ -100,7 +100,7 @@ h2 {
   font-size: 1.5rem;
   font-weight: 500;
   border-bottom: 3px double dodgerblue;
-  border-top: 3px double dodgerblue;
+
   padding: 2ch;
   margin-top: 1ch;
 }
@@ -114,7 +114,7 @@ h2 {
 }
 
 .LinksHP:hover {
-  color: beige;
+  color: #f5f5e6;
 
   background-color: dodgerblue;
 }
@@ -141,11 +141,11 @@ article {
   height: fit-content;
   border-right: 2px groove dodgerblue;
   border-left: 2px groove dodgerblue;
-  background-color: beige;
+  background-color: #f5f5e6;
 }
 
 .text-boxes {
-  background-color: beige;
+  background-color: #f5f5e6;
 }
 
 @media (width < 600px) {
@@ -161,7 +161,7 @@ article {
     border-radius: 30px;
     color: dodgerblue;
     font-weight: 400;
-    background-color: beige;
+    background-color: #f5f5e6;
     margin-top: 2px;
     margin-bottom: 1ch;
   }
@@ -192,7 +192,7 @@ article {
     height: fit-content;
     text-align: center;
     padding: 1ch;
-    background-color: beige;
+    background-color: #f5f5e6;
     border-right: 2px double dodgerblue;
     border-left: 2px groove dodgerblue;
   }
@@ -225,7 +225,7 @@ article {
     height: fit-content;
     border-right: 2px groove dodgerblue;
     border-left: 2px groove dodgerblue;
-    background-color: beige;
+    background-color: #f5f5e6;
   }
 
   .description {
