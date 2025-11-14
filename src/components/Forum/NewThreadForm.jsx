@@ -13,14 +13,14 @@ function NewThreadForm({ onSubmit, onCancel }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6 ">
       <h2 className="text-xl font-semibold mb-4">Create New Thread</h2>
       <input
         type="text"
         placeholder="Thread title..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-xl mx-auto"
       />
       <textarea
         placeholder="What's on your mind?"

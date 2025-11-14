@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import "./Footer.css";
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 center-0 w-full bg-white shadow-md z-50 flex justify-between items-center bg-white shadow-md px-6 py-3">
+    <footer className="fixed bottom-0 center-0 w-full shadow-md z-50 flex justify-between items-center shadow-md px-6 py-3">
       <Link to="/" className="flex items-center space-x-2">
         <img
           src="/images/diy.png"

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router";
 
 function Navbar() {
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 flex justify-between items-center bg-white shadow-md px-6 py-3">
+    <header className="fixed top-0 left-0 w-full  shadow-md z-50 flex justify-between items-center  shadow-md px-6 py-3">
       {/* Logo Section */}
       <Link to="/" className="flex items-center space-x-2">
         <img
