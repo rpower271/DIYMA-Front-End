@@ -1,15 +1,20 @@
-import React from 'react'
-import ThreadCard from './ThreadCard'
+import React from "react";
+import ThreadCard from "./ThreadCard";
 
-function ThreadList( {threads, activeThreadId, onToggleReplies, onAddReply}) {
+function ThreadList({ threads, activeThreadId, onToggleReplies, onAddReply }) {
   return (
     <div>
-        {threads.map((thread) => (
-            <ThreadCard key={thread.id}
-            thread={thread}
-        ))}
+      {threads.map((thread) => (
+        <ThreadCard
+          key={thread.id}
+          thread={thread}
+          isActive={activeThreadId === thread.id}
+          onToggleReplies={onToggleReplies}
+          onAddReply={onAddReply}
+        />
+      ))}
     </div>
-  )
+  );
 }
 
-export default ThreadList
+export default ThreadList;
