@@ -3,8 +3,7 @@ import "./App.css";
 import Layout from "./Layout";
 import ProjectIdeas from "./components/ProjectIdeas/ProjectIdeas";
 import Error404 from "./Error404";
-import CreateForum from "./components/Forum/CreateNewThread";
-import ForumPage from "./components/ForumV2.jsx/ForumPage";
+import ForumPage from "./components/Forum/ForumPage";
 
 function App() {
   return (
