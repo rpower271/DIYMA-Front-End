@@ -13,7 +13,7 @@ function ThreadCard({ thread, onAddReply }) {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">
+      <h2 className="text-xl font-semibold text-gray-800 mb-2 break-words whitespace-normal">
         {thread.title}
       </h2>
       <div className="flex items-center text-sm text-gray-600 mb-3">
