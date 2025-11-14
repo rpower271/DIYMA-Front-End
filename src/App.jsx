@@ -4,6 +4,7 @@ import UserPage from "./componentsUserPage/UserPage";
 import Layout from "./Layout";
 import HomePage from "./components/HomePage/homePage";
 import Error404 from "./Error404";
+import ForumPage from "./components/Forum/ForumPage";
 import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
 import Register from "./components/Auth/Register";
 import Login from "./Login";
@@ -13,6 +14,8 @@ function App() {
     <>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="forum" element={<ForumPage />} />
+          <Route path="projects" element={<ProjectIdeas />} />
           <Route index element={<HomePage />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
