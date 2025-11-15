@@ -5,6 +5,9 @@ function ProfileInfoCard({ user, projectsAdded }) {
     <div className="border-2 border-amber-50 shadow-md bg-amber-50 p-8 flex-1">
       <h3 className="text-xl font-bold mb-4 text-slate-800">Profile info</h3>
       <p className="mb-2 text-slate-900">
+        <strong>Name:</strong> {user.name}
+      </p>
+      <p className="mb-2 text-slate-900">
         <strong>Username:</strong> {user.username}
       </p>
       <p className="mb-2 text-slate-900">

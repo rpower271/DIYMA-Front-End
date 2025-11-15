@@ -26,6 +26,16 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
           <h2 className="text-2xl font-bold mb-6 text-black">Edit Account</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
+              <label className="block mb-2 font-semibold text-black">Name:</label>
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="block w-full border-2 border-black px-3 py-2 focus:outline-none"
+                style={{ maxWidth: "100%" }}
+              />
+            </div>
+            <div className="mb-4">
               <label className="block mb-2 font-semibold text-slate-900">
                 Username:
               </label>

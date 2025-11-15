@@ -9,6 +9,7 @@ import DeleteProjectCard from "./DeleteProjectCard";
 import EditProjectCard from "./EditProjectsCard";
 
 const initialUser = {
+  name: "Diyma User",
   username: "diyma_user",
   email: "diyma_user@fake.com",
   phoneNumber: "555-555-5555",
@@ -168,15 +169,20 @@ function UserPage() {
       </h1>
 
       <div className="bg-white border-2 rounded-2xl border-stone-300 shadow-md p-6 mb-6 max-w-7xl mx-auto px-10 w-full mt-2">
-        <div className="flex gap-6 mb-6 mt-6">
+        <div className="flex gap-6 mb-6 mt-6 items-center">
           <AvatarCard
             user={user}
             onEditAccount={handleEditAccount}
             onAvatarChange={handleAvatarChange}
           />
 
-          <div>
-            <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
+          <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
+          <div className="flex-1 flex items-center justify-center pl-8">
+            <p className="text-5xl font-bold text-black text-center">
+              Welcome,
+              <br />
+              {user.name}
+            </p>
           </div>
         </div>
 
