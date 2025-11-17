@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router";
 import "./App.css";
 import UserPage from "./componentsUserPage/UserPage";
 import Layout from "./Layout";
-import HomePage from "./components/HomePage/homePage";
+import HomePage from "./components/HomePage/HomePage";
 import Error404 from "./Error404";
 import ForumPage from "./components/Forum/ForumPage";
 import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
