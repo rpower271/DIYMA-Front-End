@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../Auth/authContext";
+import { useAuth } from "../Auth/AuthContext";
 import NewThreadForm from "./NewThreadForm";
 import ThreadCard from "./ThreadCard";
 import SearchBar from "./SearchBar";
