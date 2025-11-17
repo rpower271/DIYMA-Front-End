@@ -112,3 +112,4 @@ export const listOfIdeas = [
     coverimage: "/images/Laptop-Stand.jpg",
   },
 ];
+// updated images in folder to remove pulblic in path
