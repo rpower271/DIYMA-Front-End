@@ -4,10 +4,9 @@ import NewThreadForm from "./NewThreadForm";
 import ThreadCard from "./ThreadCard";
 import SearchBar from "./SearchBar";
 import useQuery from "../Api/useQuery";
+import { Link } from "react-router";
 
 function ForumPage() {
-  // const [threads, setThreads] = useState([]);
-
   const [showNewThread, setShowNewThread] = useState(false);
   const [currentUser] = useState("CurrentUser");
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +18,7 @@ function ForumPage() {
 
   const filteredThreads = threads
     ? threads.filter((thread) =>
-        thread.title.toLowercase().includes(searchTerm.toLowerCase())
+        thread.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
 
@@ -31,16 +30,16 @@ function ForumPage() {
     );
   }
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-red-100 text-red-700 p-6 rounded-lg">
-          <h2 className="text-xl font-bold mb-2">Error Loading Forum</h2>
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+  //       <div className="bg-red-100 text-red-700 p-6 rounded-lg">
+  //         <h2 className="text-xl font-bold mb-2">Error Loading Forum</h2>
+  //         <p>{error}</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen ">
@@ -58,8 +57,8 @@ function ForumPage() {
                 {showNewThread ? "Cancel" : "New Thread"}
               </button>
             ) : (
-              <div className="text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-lg">
-                Log in to create threads
+              <div className="text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-lg hover:text-blue-600">
+                <Link to="/login">Log in to create threads</Link>
               </div>
             )}
           </div>
