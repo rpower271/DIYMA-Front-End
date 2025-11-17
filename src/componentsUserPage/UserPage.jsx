@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import EditAccountForm from "./EditAccountForm";
 import AvatarCard from "./AvatarCard";
 import ProfileInfoCard from "./ProfileInfoCard";
@@ -8,75 +9,90 @@ import CreateProjectCard from "./CreateProjectCard";
 import DeleteProjectCard from "./DeleteProjectCard";
 import EditProjectCard from "./EditProjectsCard";
 import { useAuth } from "../components/Auth/AuthContext";
-
-const initialUser = {
-  name: "Diyma User",
-  username: "diyma_user",
-  email: "diyma_user@fake.com",
-  phoneNumber: "555-555-5555",
-  avatar: null,
-};
-
-const initialProjects = [
-  {
-    id: 1,
-    title: "Project 1",
-    description: "Build a treehouse",
-    totalCost: "500",
-    plannedDueDate: "2025-12-31",
-    itemsNeeded: "Wood, nails, screws, paint",
-    status: "Not Started",
-  },
-  {
-    id: 2,
-    title: "Project 2",
-    description: "Create a garden",
-    totalCost: "200",
-    plannedDueDate: "2025-11-15",
-    itemsNeeded: "Seeds, soil, tools, fence",
-    status: "In Progress",
-  },
-  {
-    id: 3,
-    title: "Project 3",
-    description: "Renovate kitchen",
-    totalCost: "3000",
-    plannedDueDate: "2025-10-01",
-    itemsNeeded: "Cabinets, counters, appliances",
-    status: "Completed",
-  },
-];
+import { useApi } from "../components/Api/ApiContext";
 
 function UserPage() {
-  const [user, setUser] = useState(initialUser);
-  const [projects, setProjects] = useState(initialProjects);
+  const { token, logout } = useAuth();
+  const { request } = useApi();
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
+  const [projects, setProjects] = useState([]);
   const [editAccount, setEditAccount] = useState(false);
   const [createProject, setCreateProject] = useState(false);
   const [deleteProject, setDeleteProject] = useState(false);
   const [editProject, setEditProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const projectsAdded = projects.length;
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    const fetchData = async () => {
+      try {
+        const userData = await request("/users/me", { method: "GET" });
+        setUser(userData);
+
+        const projectsData = await request("/projects", { method: "GET" });
+        setProjects(projectsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error.message);
+
+        if (
+          error.message.includes("401") ||
+          error.message.includes("unauthorized")
+        ) {
+          logout();
+          navigate("/login");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [token, navigate, request, logout]);
 
   function handleEditAccount() {
     setEditAccount(true);
   }
 
-  function handleSaveAccount(updatedInfo) {
-    setUser((prev) => ({
-      ...prev,
-      ...updatedInfo,
-    }));
-    setEditAccount(false);
+  async function handleSaveAccount(updatedInfo) {
+    try {
+      const updatedUser = await request(`/users/${user.id}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedInfo),
+      });
+
+      setUser(updatedUser);
+      setEditAccount(false);
+    } catch (error) {
+      console.error("Error updating account:", error);
+      alert(`Failed to update account: ${error.message}`);
+    }
   }
 
   function handleCancelEdit() {
     setEditAccount(false);
   }
 
-  function handleAvatarChange(imageUrl) {
-    setUser((prev) => ({
-      ...prev,
-      avatar: imageUrl,
-    }));
+  async function handleAvatarChange(imageUrl) {
+    try {
+      const updatedUser = await request(`/users/${user.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ avatar: imageUrl }),
+      });
+
+      setUser(updatedUser);
+    } catch (error) {
+      console.error("Error updating avatar:", error);
+      alert(`Failed to update avatar: ${error.message}`);
+    }
   }
 
   function handleCreateProject() {
