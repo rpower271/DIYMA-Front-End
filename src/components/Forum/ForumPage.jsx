@@ -1,51 +1,46 @@
 import { useState } from "react";
+import { useAuth } from "../Auth/authContext";
 import NewThreadForm from "./NewThreadForm";
 import ThreadCard from "./ThreadCard";
 import SearchBar from "./SearchBar";
+import useQuery from "../Api/useQuery";
 
 function ForumPage() {
-  const [threads, setThreads] = useState([]);
+  // const [threads, setThreads] = useState([]);
 
   const [showNewThread, setShowNewThread] = useState(false);
   const [currentUser] = useState("CurrentUser");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleCreateThread = (title, content) => {
-    const newThread = {
-      id: threads.length + 1,
-      title,
-      author: currentUser,
-      content,
-      replies: [],
-    };
-    setThreads([newThread, ...threads]);
-    setShowNewThread(false);
-  };
+  const { token } = useAuth();
+  const isAuthenticated = !!token;
 
-  const handleAddReply = (threadId, content) => {
-    setThreads(
-      threads.map((thread) => {
-        if (thread.id === threadId) {
-          return {
-            ...thread,
-            replies: [
-              ...thread.replies,
-              {
-                id: thread.replies.length + 1,
-                author: currentUser,
-                content,
-              },
-            ],
-          };
-        }
-        return thread;
-      })
+  const { data: threads, loading, error } = useQuery("/threads", "threads");
+
+  const filteredThreads = threads
+    ? threads.filter((thread) =>
+        thread.title.toLowercase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-xl text-gray-600">Loading threads...</div>
+      </div>
     );
-  };
+  }
 
-  const filteredThreads = threads.filter((thread) =>
-    thread.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="bg-red-100 text-red-700 p-6 rounded-lg">
+          <h2 className="text-xl font-bold mb-2">Error Loading Forum</h2>
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen ">
@@ -55,18 +50,24 @@ function ForumPage() {
             <h1 className="text-3xl font-bold text-gray-800">
               Community Forum
             </h1>
-            <button
-              onClick={() => setShowNewThread(!showNewThread)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              {showNewThread ? "Cancel" : "New Thread"}
-            </button>
+            {isAuthenticated ? (
+              <button
+                onClick={() => setShowNewThread(!showNewThread)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              >
+                {showNewThread ? "Cancel" : "New Thread"}
+              </button>
+            ) : (
+              <div className="text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-lg">
+                Log in to create threads
+              </div>
+            )}
           </div>
         </div>
 
-        {showNewThread && (
+        {isAuthenticated && showNewThread && (
           <NewThreadForm
-            onSubmit={handleCreateThread}
+            currentUser={currentUser}
             onCancel={() => setShowNewThread(false)}
           />
         )}
@@ -76,12 +77,17 @@ function ForumPage() {
             <ThreadCard
               key={thread.id}
               thread={thread}
-              onAddReply={handleAddReply}
+              currentUser={currentUser}
+              isAuthenticated={isAuthenticated}
             />
           ))}
           {filteredThreads.length === 0 && (
             <div className="bg-white rounded-lg shadow-md p-6 text-center text-gray-500">
-              No Thread Title Named {searchTerm}
+              {searchTerm
+                ? `No threads found matching "${searchTerm}"`
+                : threads && threads.length === 0
+                ? "No threads yet. Create one!"
+                : "No threads found"}
             </div>
           )}
         </div>
