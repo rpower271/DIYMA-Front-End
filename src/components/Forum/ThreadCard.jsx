@@ -1,13 +1,26 @@
 import { useState } from "react";
+import useMutation from "../Api/UseMutation";
 
-function ThreadCard({ thread, onAddReply }) {
+function ThreadCard({ thread, currentUser, isAuthenticated }) {
   const [showReplies, setShowReplies] = useState(false);
   const [replyContent, setReplyContent] = useState("");
 
-  const handleSubmitReply = () => {
+  const {
+    mutate: createReply,
+    loading: submitting,
+    error: replyError,
+  } = useMutation(`POST`, `/threads/${thread.id}/replies`, [`threads`]);
+
+  const handleSubmitReply = async () => {
     if (replyContent.trim()) {
-      onAddReply(thread.id, replyContent);
-      setReplyContent("");
+      const success = await createReply({
+        content: replyContent,
+        author: currentUser,
+      });
+
+      if (success) {
+        setReplyContent("");
+      }
     }
   };
 
@@ -45,22 +58,38 @@ function ThreadCard({ thread, onAddReply }) {
             ))}
           </div>
 
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Write a reply..."
-              value={replyContent}
-              onChange={(e) => setReplyContent(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSubmitReply()}
-              className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              onClick={handleSubmitReply}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center"
-            >
-              ➤
-            </button>
-          </div>
+          {replyError && (
+            <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-3">
+              {replyError}
+            </div>
+          )}
+
+          {isAuthenticated ? (
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Write a reply..."
+                value={replyContent}
+                onChange={(e) => setReplyContent(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && !submitting && handleSubmitReply()
+                }
+                disabled={submitting}
+                className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                onClick={handleSubmitReply}
+                disabled={submitting}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center"
+              >
+                {submitting ? "..." : "➤"}
+              </button>
+            </div>
+          ) : (
+            <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg text-center">
+              Please log in to reply to this thread.
+            </div>
+          )}
         </div>
       )}
     </div>

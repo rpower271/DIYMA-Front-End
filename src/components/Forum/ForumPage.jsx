@@ -81,7 +81,7 @@ function ForumPage() {
           ))}
           {filteredThreads.length === 0 && (
             <div className="bg-white rounded-lg shadow-md p-6 text-center text-gray-500">
-              {searchTerm}
+              No Thread Title Named {searchTerm}
             </div>
           )}
         </div>
