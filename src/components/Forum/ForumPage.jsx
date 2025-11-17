@@ -3,7 +3,7 @@ import { useAuth } from "../Auth/AuthContext";
 import NewThreadForm from "./NewThreadForm";
 import ThreadCard from "./ThreadCard";
 import SearchBar from "./SearchBar";
-import useQuery from "../Api/useQuery";
+import useQuery from "../Api/UseQuery";
 import { Link } from "react-router";
 
 function ForumPage() {
