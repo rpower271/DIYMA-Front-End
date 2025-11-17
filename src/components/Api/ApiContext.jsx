@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-import { useAuth } from "../Auth/authContext";
+import { useAuth } from "../Auth/AuthContext";
 
 export const API = "https://random.com/api";
 
