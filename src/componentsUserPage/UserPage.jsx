@@ -7,6 +7,7 @@ import ShareProjectsCard from "./ShareProjectsCard";
 import CreateProjectCard from "./CreateProjectCard";
 import DeleteProjectCard from "./DeleteProjectCard";
 import EditProjectCard from "./EditProjectsCard";
+import { useAuth } from "../components/Auth/AuthContext";
 
 const initialUser = {
   name: "Diyma User",
