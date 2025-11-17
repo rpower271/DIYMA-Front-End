@@ -9,6 +9,7 @@ import DeleteProjectCard from "./DeleteProjectCard";
 import EditProjectCard from "./EditProjectsCard";
 
 const initialUser = {
+  name: "Diyma User",
   username: "diyma_user",
   email: "diyma_user@fake.com",
   phoneNumber: "555-555-5555",
@@ -162,34 +163,39 @@ function UserPage() {
     : null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-amber-50">
-      <h1 className="text-3xl font-bold text-center py-6 text-slate-800">
+    <div className="min-h-screen  flex flex-col ">
+      <h1 className="bg-white rounded-lg shadow-md p-6 mb-6 max-w-5xl mx-auto p-6">
         User page
       </h1>
 
-      <div className="max-w-7xl mx-auto px-4 w-full">
-        <div className="flex gap-6 mb-6">
+      <div className="bg-white border-2 rounded-2xl border-stone-300 shadow-md p-6 mb-6 max-w-7xl mx-auto px-10 w-full mt-2">
+        <div className="flex gap-6 mb-6 mt-6 items-center">
           <AvatarCard
             user={user}
             onEditAccount={handleEditAccount}
             onAvatarChange={handleAvatarChange}
           />
 
-          <div>
-            <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
+          <ProfileInfoCard user={user} projectsAdded={projectsAdded} />
+          <div className="flex-1 flex items-center justify-center pl-8">
+            <p className="text-5xl font-bold text-black text-center">
+              Welcome,
+              <br />
+              {user.name}
+            </p>
           </div>
         </div>
 
         <div className="flex gap-6 mb-6">
           <button
             onClick={handleCreateProject}
-            className="flex-1 border-2 border-slate-800 text-slate-800 p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
+            className="bg-blue-500 flex-1 border-2 rounded-2xl shadow-md border-blue-500 text-white p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
           >
             Create project
           </button>
           <button
             onClick={handleDeleteProject}
-            className="flex-1 border-2 border-slate-800 text-slate-800 p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
+            className="bg-blue-500 flex-1 border-2 rounded-2xl shadow-md border-blue-500 text-white p-12 text-xl font-semibold hover:bg-slate-800 hover:text-white transition"
           >
             Delete project
           </button>

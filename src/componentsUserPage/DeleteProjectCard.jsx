@@ -26,7 +26,7 @@ export default function DeleteProjectCard({ projects, onDelete, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center p-4">
-      <div className="bg-white border-2 border-slate-800 p-8 w-full max-w-md">
+      <div className="bg-stone-300 border-2 rounded-xl  shadow-md border-slate-800 p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-slate-800">
           Delete Project
         </h2>
@@ -39,7 +39,7 @@ export default function DeleteProjectCard({ projects, onDelete, onCancel }) {
             <select
               value={selectedProjectId}
               onChange={(e) => setSelectedProjectId(e.target.value)}
-              className="w-full border-2 border-slate-800 p-2"
+              className="bg-white w-full border-2 border-slate-800 p-2"
             >
               <option value="">-- Choose a project --</option>
               {projects.map((project) => (
@@ -54,13 +54,13 @@ export default function DeleteProjectCard({ projects, onDelete, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 hover:bg-slate-800 hover:text-white transition"
+              className="bg-blue-500 flex-1 border-2 shadow-md rounded-xl border-blue-500 text-white  p-2 hover:bg-slate-800 hover:text-white transition"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 font-semibold hover:bg-slate-800 hover:text-white transition"
+              className="bg-blue-500 flex-1 border-2 shadow-md rounded-xl border-blue-500 text-white p-2 font-semibold hover:bg-slate-800 hover:text-white transition"
             >
               Delete Project
             </button>

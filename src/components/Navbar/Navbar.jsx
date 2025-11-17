@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router";
+import { useAuth } from "../Auth/AuthContext";
 
 function Navbar() {
+  const { logout, token } = useAuth();
   return (
     <header className="fixed top-0 left-0 w-full  shadow-md z-50 flex justify-between items-center  shadow-md px-6 py-3">
       {/* Logo Section */}
@@ -19,7 +21,7 @@ function Navbar() {
           to="/"
           className={({ isActive }) =>
             `text-lg font-medium ${
-              isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
+              isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
             }`
           }
         >
@@ -29,7 +31,7 @@ function Navbar() {
           to="/Ideas"
           className={({ isActive }) =>
             `text-lg font-medium ${
-              isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
+              isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
             }`
           }
         >
@@ -39,22 +41,42 @@ function Navbar() {
           to="/forum"
           className={({ isActive }) =>
             `text-lg font-medium ${
-              isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
+              isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
             }`
           }
         >
           Forum
         </NavLink>
-        <NavLink
-          to="/userPage"
-          className={({ isActive }) =>
-            `text-lg font-medium ${
-              isActive ? "text-cyan-600" : "text-gray-700 hover:text-cyan-600"
-            }`
-          }
-        >
-          Account
-        </NavLink>
+        {token ? (
+          <>
+            <NavLink
+              to="/userPage"
+              className={({ isActive }) =>
+                `text-lg font-medium ${
+                  isActive
+                    ? "text-blue-600"
+                    : "text-gray-700 hover:text-blue-600"
+                }`
+              }
+            >
+              Account
+            </NavLink>
+            <NavLink to="/" onClick={() => logout()}>
+              Logout
+            </NavLink>
+          </>
+        ) : (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `text-lg font-medium ${
+                isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+              }`
+            }
+          >
+            Login
+          </NavLink>
+        )}
       </nav>
     </header>
   );

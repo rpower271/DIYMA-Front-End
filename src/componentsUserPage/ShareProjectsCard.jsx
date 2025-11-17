@@ -20,7 +20,7 @@ function ShareProjectsCard({ projects }) {
     }
   }
   return (
-    <div className="border-2 border-black p-8 text-center mb-6">
+    <div className="bg-amber-50 border-2 shadow-md border-amber-50 p-8 text-center mb-6">
       <h3 className="text-xl font-bold mb-4 text-slate-800">
         Share your project
       </h3>
@@ -31,7 +31,7 @@ function ShareProjectsCard({ projects }) {
         <select
           value={selectedProjectId}
           onChange={(e) => setSelectedProjectId(e.target.value)}
-          className="border-2 border-slate-800 p-2 w-full max-w-md"
+          className="bg-stone-300 border-2 shadow-md border-stone-300 p-2 w-full max-w-md"
         >
           <option value="">-- Choose a project --</option>
           {projects.map((project) => (
@@ -43,7 +43,7 @@ function ShareProjectsCard({ projects }) {
       </div>
       <button
         onClick={handleShare}
-        className="border-2 border-slate-800 text-slate-800 px-6 py-2 hover:bg-slate-800 hover:text-white transition"
+        className="bg-blue-500 border-2 rounded-xl shadow-md border-blue-500 text-white px-6 py-2 hover:bg-slate-800 hover:text-white transition"
       >
         {linkCopied ? "Link Copied!" : "Copy Share Link"}
       </button>

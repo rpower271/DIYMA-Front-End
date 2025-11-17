@@ -35,7 +35,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white border-2 border-slate-800 p-8 w-full max-w-2xl my-8">
+      <div className="bg-stone-300 border-2 shadow-md rounded-xl border-slate-800 p-8 w-full max-w-2xl my-8">
         <h2 className="text-2xl font-bold mb-6 text-slate-800">Edit Project</h2>
 
         <form onSubmit={handleSubmit}>
@@ -49,7 +49,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               value={formData.title}
               onChange={handleChange}
               placeholder="Enter project title"
-              className="w-full border-2 border-slate-800 p-2"
+              className="bg-white block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -63,13 +64,14 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               onChange={handleChange}
               placeholder="Describe your project..."
               rows="4"
-              className="w-full border-2 border-slate-800 p-2 resize-none"
+              className=" bg-white block w-full border-2 border-slate-800 p-2 resize-none"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
           <div className="flex gap-4 mb-4">
             <div className="flex-1">
-              <label className="block mb-2 font-semibold text-slate-900">
+              <label className=" block mb-2 font-semibold text-slate-900">
                 Total Cost of Items:
               </label>
               <input
@@ -80,7 +82,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
                 value={formData.totalCost}
                 onChange={handleChange}
                 placeholder="0.00"
-                className="w-full border-2 border-slate-800 p-2"
+                className="bg-white block w-full border-2 border-slate-800 p-2"
+                style={{ maxWidth: "100%" }}
               />
             </div>
 
@@ -93,7 +96,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
                 type="date"
                 value={formData.plannedDueDate}
                 onChange={handleChange}
-                className="w-full border-2 border-slate-800 p-2"
+                className="bg-white block w-full border-2 border-slate-800 p-2"
+                style={{ maxWidth: "100%" }}
               />
             </div>
           </div>
@@ -108,7 +112,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               onChange={handleChange}
               placeholder="List items needed for this project..."
               rows="4"
-              className="w-full border-2 border-slate-800 p-2 resize-none"
+              className="bg-white block w-full border-2 border-slate-800 p-2 resize-none"
+              style={{ maxWidth: "100%" }}
             />
           </div>
 
@@ -120,7 +125,8 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full border-2 border-slate-800 p-2"
+              className="bg-white block w-full border-2 border-slate-800 p-2"
+              style={{ maxWidth: "100%" }}
             >
               <option value="Not Started">Not Started</option>
               <option value="In Progress">In Progress</option>
@@ -133,13 +139,13 @@ function EditProjectsCard({ project, onSave, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 hover:bg-slate-800 hover:text-white transition"
+              className="bg-blue-500 flex-1 border-2 rounded-xl border-blue-500  text-white p-2 hover:bg-slate-800 hover:text-white transition"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 border-2 border-slate-800 text-slate-800 p-2 font-semibold hover:bg-slate-800 hover:text-white transition"
+              className="bg-blue-500 flex-1 border-2 rounded-xl border-blue-500 shadow-md text-white p-2 font-semibold hover:bg-slate-800 hover:text-white transition"
             >
               Save Changes
             </button>

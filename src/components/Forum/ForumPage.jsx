@@ -45,7 +45,7 @@ function ForumPage() {
   return (
     <div className="min-h-screen ">
       <div className="max-w-5xl mx-auto p-6">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className=" bg-white rounded-lg shadow-md p-6 mb-6">
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-800">
               Community Forum
@@ -53,7 +53,7 @@ function ForumPage() {
             {isAuthenticated ? (
               <button
                 onClick={() => setShowNewThread(!showNewThread)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition"
               >
                 {showNewThread ? "Cancel" : "New Thread"}
               </button>
