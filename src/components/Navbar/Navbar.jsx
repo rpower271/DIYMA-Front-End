@@ -61,7 +61,17 @@ function Navbar() {
             >
               Account
             </NavLink>
-            <NavLink to="/" onClick={() => logout()}>
+            <NavLink
+              to="/"
+              onClick={() => logout()}
+              className={({ isActive }) =>
+                `text-lg font-medium ${
+                  isActive
+                    ? "text-blue-600"
+                    : "text-gray-700 hover:text-blue-600"
+                }`
+              }
+            >
               Logout
             </NavLink>
           </>
