@@ -58,7 +58,7 @@ function UserPage() {
     };
 
     fetchData();
-  }, [token, navigate, request, logout]);
+  }, [token, navigate, logout]);
 
   function handleEditAccount() {
     setEditAccount(true);
@@ -249,6 +249,12 @@ function UserPage() {
           onStatusChange={handleStatusChange}
           onEditProject={handleEditProject}
         />
+
+        {error && (
+          <div className="border-2 border-red-500 bg-red-100 p-4 mb-6 rounded">
+            <p className="text-red-800">Error: {error}</p>
+          </div>
+        )}
 
         <ShareProjectsCard projects={projects} />
       </div>
