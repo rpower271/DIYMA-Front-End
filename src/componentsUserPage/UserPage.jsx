@@ -99,24 +99,19 @@ function UserPage() {
     setCreateProject(true);
   }
 
-  function handleSaveProject(projectData) {
-    const newId =
-      projects.length > 0
-        ? Math.max(...projects.map((project) => project.id)) + 1
-        : 1;
+  async function handleSaveProject(projectData) {
+    try {
+      const newProject = await request("/projects", {
+        method: "POST",
+        body: JSON.stringify(projectData),
+      });
 
-    const newProject = {
-      id: newId,
-      title: projectData.title,
-      description: projectData.description,
-      totalCost: projectData.totalCost,
-      plannedDueDate: projectData.plannedDueDate,
-      itemsNeeded: projectData.itemsNeeded,
-      status: projectData.status,
-    };
-
-    setProjects((prev) => [...prev, newProject]);
-    setCreateProject(false);
+      setProjects((prev) => [...prev, newProject]);
+      setCreateProject(false);
+    } catch (error) {
+      console.error("Error creating project:", error);
+      alert(`Failed to create project: ${error.message}`);
+    }
   }
 
   function handleCancelCreate() {
@@ -127,11 +122,20 @@ function UserPage() {
     setDeleteProject(true);
   }
 
-  function handleConfirmDelete(projectId) {
-    setProjects((prev) =>
-      prev.filter((project) => project.id !== parseInt(projectId))
-    );
-    setDeleteProject(false);
+  async function handleConfirmDelete(projectId) {
+    try {
+      await request(`/projects/${projectId}`, {
+        method: 'DELETE',
+      });
+      
+      setProjects((prev) =>
+        prev.filter((project) => project.id !== parseInt(projectId))
+      );
+      setDeleteProject(false);
+    } catch (error) {
+      console.error('Error deleting project:', error);
+      alert(`Failed to delete project: ${error.message}`);
+    }
   }
 
   function handleCancelDelete() {
@@ -142,42 +146,63 @@ function UserPage() {
     setEditProject(projectId);
   }
 
-  function handleSaveEditProject(updateData) {
-    setProjects((prev) =>
-      prev.map((project) =>
-        project.id === editProject ? { ...project, ...updateData } : project
-      )
-    );
-    setEditProject(null);
+  async function handleSaveEditProject(updateData) {
+    try {
+      const updatedProject = await request(`/projects/${editProject}`, {
+        method: 'PUT',
+        body: JSON.stringify(updateData),
+      });
+      
+      setProjects((prev) =>
+        prev.map((project) =>
+          project.id === editProject ? updatedProject : project
+        )
+      );
+      setEditProject(null);
+    } catch (error) {
+      console.error('Error updating project:', error);
+      alert(`Failed to update project: ${error.message}`);
+    }
   }
 
   function handleCancelEditProject() {
     setEditProject(null);
   }
 
-  function handleStatusChange(projectId) {
-    setProjects((prev) =>
-      prev.map((project) => {
-        if (project.id === projectId) {
-          let newStatus;
-          if (project.status === "Not Started") {
-            newStatus = "In Progress";
-          } else if (project.status === "In Progress") {
-            newStatus = "Completed";
-          } else if (project.status === "Completed") {
-            newStatus = "On Hold";
-          } else {
-            newStatus = "Not Started";
-          }
-          return { ...project, status: newStatus };
-        }
-        return project;
-      })
-    );
+  async function handleStatusChange(projectId) {
+    try {
+      const project = projects.find((project) => project.id === projectId);
+      
+      let newStatus;
+      if (project.status === "Not Started") {
+        newStatus = "In Progress";
+      } else if (project.status === "In Progress") {
+        newStatus = "Completed";
+      } else if (project.status === "Completed") {
+        newStatus = "On Hold";
+      } else {
+        newStatus = "Not Started";
+      }
+
+      await request(`/projects/${projectId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      setProjects((prev) =>
+        prev.map((project) =>
+          project.id === projectId ? { ...project, status: newStatus } : project
+        )
+      );
+    } catch (error) {
+      console.error('Error updating status:', error);
+      alert(`Failed to update status: ${error.message}`);
+    }
   }
   const projectToEdit = editProject
     ? projects.find((project) => project.id === editProject)
     : null;
+    
 
   return (
     <div className="min-h-screen  flex flex-col ">
