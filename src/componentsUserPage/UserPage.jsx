@@ -222,7 +222,7 @@ function UserPage() {
             <p className="text-5xl font-bold text-black text-center">
               Welcome,
               <br />
-              {user.name}
+              {/* {user.name} */}
             </p>
           </div>
         </div>
