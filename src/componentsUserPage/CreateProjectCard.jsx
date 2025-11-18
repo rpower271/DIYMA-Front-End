@@ -4,9 +4,9 @@ function CreateProjectCard({ onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    totalCost: "",
-    plannedDueDate: "",
-    itemsNeeded: "",
+    cost: "",
+    time_frame: "",
+    items: "",
     projectStatus: "Not Started",
   });
 
@@ -18,7 +18,7 @@ function CreateProjectCard({ onSave, onCancel }) {
       return;
     }
 
-    if (!formData.plannedDueDate) {
+    if (!formData.time_frame) {
       alert("Please select a due date");
       return;
     }
@@ -74,11 +74,11 @@ function CreateProjectCard({ onSave, onCancel }) {
                 Total Cost of Items:{" "}
               </label>
               <input
-                name="totalCost"
+                name="cost"
                 type="number"
                 step="0.01"
                 min="0"
-                value={formData.totalCost}
+                value={formData.cost}
                 onChange={handleChange}
                 placeholder="0.00"
                 className="bg-white block w-full border-2 border-slate-800 p-2"
@@ -90,9 +90,9 @@ function CreateProjectCard({ onSave, onCancel }) {
                 Planned Due Date:{" "}
               </label>
               <input
-                name="plannedDueDate"
+                name="time_frame"
                 type="date"
-                value={formData.plannedDueDate}
+                value={formData.time_frame}
                 onChange={handleChange}
                 className=" bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
@@ -104,8 +104,8 @@ function CreateProjectCard({ onSave, onCancel }) {
               Items Needed:{" "}
             </label>
             <textarea
-              name="itemsNeeded"
-              value={formData.itemsNeeded}
+              name="items"
+              value={formData.items}
               onChange={handleChange}
               placeholder="List items needed for this project..."
               rows="4"
