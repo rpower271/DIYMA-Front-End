@@ -11,7 +11,7 @@ function IdeasDetails() {
   console.log("Idea coverimage:", idea.coverimage);
 
   return (
-    <article className="max-w-6xl mx-auto p-10">
+    <article className="min-h-screen flex flex-col max-w-6xl mx-auto p-10">
       {/* OUTER WRAPPER – light background */}
       <div className="bg-gray-100 rounded-3xl p-10 space-y-10 shadow-inner">
         {/* TOP SECTION: IMAGE LEFT + TITLE/DESCRIPTION RIGHT */}
