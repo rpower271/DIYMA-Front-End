@@ -4,7 +4,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: project.title,
     description: project.description,
-    cost: project.totalCost,
+    cost: project.cost,
     time_frame: project.time_frame,
     items: project.items,
     projectStatus: project.status,
