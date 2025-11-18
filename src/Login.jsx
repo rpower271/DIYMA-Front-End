@@ -31,27 +31,27 @@ function Login() {
             <div className="mb-4">
               <label className="block mb-2 font-semibold text-slate-900">
                 Username:
+                <input
+                  type="text"
+                  name="username"
+                  className=" bg-white block w-full border-2 border-slate-800 p-2"
+                  style={{ maxWidth: "100%" }}
+                  required
+                />
               </label>
-              <input
-                type="text"
-                name="username"
-                className=" bg-white block w-full border-2 border-slate-800 p-2"
-                style={{ maxWidth: "100%" }}
-                required
-              />
             </div>
 
             <div className="mb-6">
               <label className="block mb-2 font-semibold text-slate-900">
                 Password:
+                <input
+                  type="password"
+                  name="password"
+                  className="bg-white block w-full border-2 border-slate-800 p-2"
+                  style={{ maxWidth: "100%" }}
+                  required
+                />
               </label>
-              <input
-                type="password"
-                name="password"
-                className="bg-white block w-full border-2 border-slate-800 p-2"
-                style={{ maxWidth: "100%" }}
-                required
-              />
             </div>
 
             <button
