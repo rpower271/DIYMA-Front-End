@@ -27,7 +27,7 @@ function Login() {
       </h1>
       <div className="min-h-screen  flex items-start justify-center p-4">
         <div className="bg-white border-2 rounded-xl shadow-md p-6 mb-6 border-white p-8 w-full max-w-md">
-          <form onSubmit={tryLogin}>
+          <form action={tryLogin}>
             <div className="mb-4">
               <label className="block mb-2 font-semibold text-slate-900">
                 Username:
@@ -54,10 +54,7 @@ function Login() {
               </label>
             </div>
 
-            <button
-              type="submit"
-              className="bg-blue-500 w-full border-2 rounded-2xl border-blue-500 text-white p-3 font-semibold hover:bg-slate-800 hover:text-white transition mb-4"
-            >
+            <button className="bg-blue-500 w-full border-2 rounded-2xl border-blue-500 text-white p-3 font-semibold hover:bg-slate-800 hover:text-white transition mb-4">
               Login
             </button>
             {error && <p role="alert">*{error}*</p>}
