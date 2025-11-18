@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 import { useAuth } from "../Auth/AuthContext";
 
-export const API = import.meta.env.VITE_API;
+export const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const ApiContext = createContext();
 

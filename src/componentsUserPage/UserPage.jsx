@@ -103,7 +103,7 @@ function UserPage() {
 
   async function handleSaveProject(projectData) {
     try {
-      const newProject = await request("/projects", {
+      const newProject = await request("/users/projects", {
         method: "POST",
         body: JSON.stringify(projectData),
       });
@@ -126,7 +126,7 @@ function UserPage() {
 
   async function handleConfirmDelete(projectId) {
     try {
-      await request(`/projects/${projectId}`, {
+      await request(`/users/projects/${projectId}`, {
         method: "DELETE",
       });
 
@@ -150,7 +150,7 @@ function UserPage() {
 
   async function handleSaveEditProject(updateData) {
     try {
-      const updatedProject = await request(`/projects/${editProject}`, {
+      const updatedProject = await request(`/users/projects/${editProject}`, {
         method: "PUT",
         body: JSON.stringify(updateData),
       });
@@ -186,7 +186,7 @@ function UserPage() {
         newStatus = "Not Started";
       }
 
-      await request(`/projects/${projectId}`, {
+      await request(`/users/projects/${projectId}`, {
         method: "PATCH",
         body: JSON.stringify({ status: newStatus }),
       });
