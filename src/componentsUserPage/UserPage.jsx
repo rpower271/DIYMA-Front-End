@@ -37,7 +37,9 @@ function UserPage() {
         const userData = await request("/users/me", { method: "GET" });
         setUser(userData);
 
-        const projectsData = await request("users/projects", { method: "GET" });
+        const projectsData = await request("/users/projects", {
+          method: "GET",
+        });
         setProjects(projectsData);
       } catch (error) {
         console.error("Error fetching data:", error);
