@@ -125,15 +125,15 @@ function UserPage() {
   async function handleConfirmDelete(projectId) {
     try {
       await request(`/projects/${projectId}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
-      
+
       setProjects((prev) =>
         prev.filter((project) => project.id !== parseInt(projectId))
       );
       setDeleteProject(false);
     } catch (error) {
-      console.error('Error deleting project:', error);
+      console.error("Error deleting project:", error);
       alert(`Failed to delete project: ${error.message}`);
     }
   }
@@ -149,10 +149,10 @@ function UserPage() {
   async function handleSaveEditProject(updateData) {
     try {
       const updatedProject = await request(`/projects/${editProject}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(updateData),
       });
-      
+
       setProjects((prev) =>
         prev.map((project) =>
           project.id === editProject ? updatedProject : project
@@ -160,7 +160,7 @@ function UserPage() {
       );
       setEditProject(null);
     } catch (error) {
-      console.error('Error updating project:', error);
+      console.error("Error updating project:", error);
       alert(`Failed to update project: ${error.message}`);
     }
   }
@@ -172,7 +172,7 @@ function UserPage() {
   async function handleStatusChange(projectId) {
     try {
       const project = projects.find((project) => project.id === projectId);
-      
+
       let newStatus;
       if (project.status === "Not Started") {
         newStatus = "In Progress";
@@ -185,7 +185,7 @@ function UserPage() {
       }
 
       await request(`/projects/${projectId}`, {
-        method: 'PATCH',
+        method: "PATCH",
         body: JSON.stringify({ status: newStatus }),
       });
 
@@ -195,14 +195,13 @@ function UserPage() {
         )
       );
     } catch (error) {
-      console.error('Error updating status:', error);
+      console.error("Error updating status:", error);
       alert(`Failed to update status: ${error.message}`);
     }
   }
   const projectToEdit = editProject
     ? projects.find((project) => project.id === editProject)
     : null;
-    
 
   return (
     <div className="min-h-screen  flex flex-col ">
@@ -223,7 +222,7 @@ function UserPage() {
             <p className="text-5xl font-bold text-black text-center">
               Welcome,
               <br />
-              {user.name}
+              {/* {user.name} */}
             </p>
           </div>
         </div>
