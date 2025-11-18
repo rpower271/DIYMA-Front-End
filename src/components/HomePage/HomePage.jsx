@@ -55,7 +55,11 @@ export default function HomePage() {
             All Ideas
           </Link>
           <img id="ideas-image" src="/images/HP6.jpg" alt="Lightbuld" />
-          <img id="ideas-image" src="/images/wooden-tray.jpg" alt="Lightbuld" />
+          <img
+            id="ideas-image"
+            src="./images/wooden-tray.jpg"
+            alt="Lightbuld"
+          />
         </div>
       </article>
       <article>
