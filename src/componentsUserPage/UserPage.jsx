@@ -37,7 +37,7 @@ function UserPage() {
         const userData = await request("/users/me", { method: "GET" });
         setUser(userData);
 
-        const projectsData = await request("/projects", { method: "GET" });
+        const projectsData = await request("users/projects", { method: "GET" });
         setProjects(projectsData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -222,7 +222,7 @@ function UserPage() {
             <p className="text-5xl font-bold text-black text-center">
               Welcome,
               <br />
-              {/* {user.name} */}
+              {user.name}
             </p>
           </div>
         </div>
