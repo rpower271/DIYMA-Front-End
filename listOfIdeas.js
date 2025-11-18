@@ -222,3 +222,4 @@ export const listOfIdeas = [
     timeframe: "1 day",
   },
 ];
+// updated images in folder to remove pulblic in path

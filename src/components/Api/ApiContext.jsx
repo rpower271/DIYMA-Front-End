@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-import { useAuth } from "../Auth/authContext";
+import { useAuth } from "../Auth/AuthContext";
 
-export const API = "https://random.com/api";
+export const API =
+  "postgresql://diyma_backend_user:hTZLaBouMMPDbi9k2CAPLxjNHRa3toTR@dpg-d4dlnah5pdvs73au4ih0-a.oregon-postgres.render.com";
 
 const ApiContext = createContext();
 

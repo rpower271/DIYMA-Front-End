@@ -8,10 +8,10 @@ function Login({ setToken, token }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (userData.password && userData.email) {
+    if (userData.password && userData.username) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/api/users/login`,
+          `${import.meta.env.VITE_API}/users/login`,
           {
             method: "POST",
             headers: {
@@ -53,11 +53,11 @@ function Login({ setToken, token }) {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block mb-2 font-semibold text-slate-900">
-                Email:
+                Username:
               </label>
               <input
-                type="email"
-                name="email"
+                type="username"
+                name="username"
                 onChange={handleInput}
                 className=" bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
