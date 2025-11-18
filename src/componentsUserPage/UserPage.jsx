@@ -34,16 +34,12 @@ function UserPage() {
 
     const fetchData = async () => {
       try {
-        console.log("Fetching user data with token:", token);
         const userData = await request("/users/me", { method: "GET" });
-        console.log("User data received:", userData);
         setUser(userData);
 
-        console.log("Fetching projects...");
         const projectsData = await request("/users/projects", {
           method: "GET",
         });
-        console.log("Projects data received:", projectsData);
         setProjects(projectsData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -180,11 +176,11 @@ function UserPage() {
       const project = projects.find((project) => project.id === projectId);
 
       let newStatus;
-      if (project.status === "Not Started") {
+      if (project.projectStatus === "Not Started") {
         newStatus = "In Progress";
-      } else if (project.status === "In Progress") {
+      } else if (project.projectStatus === "In Progress") {
         newStatus = "Completed";
-      } else if (project.status === "Completed") {
+      } else if (project.projectStatus === "Completed") {
         newStatus = "On Hold";
       } else {
         newStatus = "Not Started";

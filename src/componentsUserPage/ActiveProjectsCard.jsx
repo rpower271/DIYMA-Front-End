@@ -31,7 +31,7 @@ function ActiveProjectsCard({ projects, onStatusChange, onEditProject }) {
               onClick={() => onStatusChange(project.id)}
               className="bg-blue-500 border border-blue-500 shadow-md text-white px-4 py-1 ml-4 hover:bg-slate-800 hover:text-white transition"
             >
-              {project.status}
+              {project.projectStatus}
             </button>
           </div>
 
