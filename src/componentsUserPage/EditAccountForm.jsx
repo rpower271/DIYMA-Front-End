@@ -2,9 +2,10 @@ import { useState } from "react";
 
 function EditAccountForm({ user, onUpdate, onCancel }) {
   const [formData, setFormData] = useState({
-    username: user.username,
-    email: user.email,
-    phoneNumber: user.phoneNumber,
+    name: user?.name || "",
+    username: user?.username || "",
+    email: user?.email || "",
+    phoneNumber: user?.phoneNumber || "",
   });
 
   function handleSubmit(e) {
@@ -26,10 +27,12 @@ function EditAccountForm({ user, onUpdate, onCancel }) {
           <h2 className="text-2xl font-bold mb-6 text-black">Edit Account</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block mb-2 font-semibold text-black">Name:</label>
+              <label className="block mb-2 font-semibold text-black">
+                Name:
+              </label>
               <input
                 name="name"
-                value={formData.name}
+                value={formData.name || ""}
                 onChange={handleChange}
                 className="block w-full border-2 border-black px-3 py-2 focus:outline-none"
                 style={{ maxWidth: "100%" }}
