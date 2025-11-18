@@ -4,7 +4,7 @@ export const listOfIdeas = [
     title: "Floating Shelves",
     description:
       "Create stylish floating shelves using wood planks and hidden brackets. Perfect for adding extra storage and a modern touch to your living space.",
-    coverimage: "src/images/Floating-Shelves.jpg",
+    coverimage: "/images/Floating-Shelves.jpg",
   },
   {
     id: 2,

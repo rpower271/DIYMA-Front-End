@@ -11,22 +11,22 @@ export default function HomePage() {
         <figure className="imgs">
           <img
             className="imgHP shadow-md"
-            src="/public/images/HP1.jpg"
+            src="/images/HP1.jpg"
             alt="Man in window seal"
           />
           <img
             className="imgHP shadow-md "
-            src="/public/images/HP2.jpg"
+            src="/images/HP2.jpg"
             alt="Man building crib"
           />
           <img
             className="imgHP shadow-md "
-            src="/public/images/HP3.jpg"
+            src="/images/HP3.jpg"
             alt="Women hanging photos"
           />
           <img
             className="imgHP shadow-md"
-            src="/public/images/HP4.jpg"
+            src="/images/HP4.jpg"
             alt="People painting"
           />
         </figure>
