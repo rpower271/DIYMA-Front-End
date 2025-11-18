@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "./components/Auth/AuthContext";
 
 function Login({ setToken, token }) {
   const [userData, setUserData] = useState({});
@@ -57,8 +56,8 @@ function Login({ setToken, token }) {
                 Username:
               </label>
               <input
-                type="email"
-                name="email"
+                type="username"
+                name="username"
                 onChange={handleInput}
                 className=" bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
