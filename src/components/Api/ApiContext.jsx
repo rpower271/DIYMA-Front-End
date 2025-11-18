@@ -2,8 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 import { useAuth } from "../Auth/AuthContext";
 
-export const API =
-  "postgresql://diyma_backend_user:hTZLaBouMMPDbi9k2CAPLxjNHRa3toTR@dpg-d4dlnah5pdvs73au4ih0-a.oregon-postgres.render.com";
+export const API = import.meta.env.VITE_API;
 
 const ApiContext = createContext();
 
