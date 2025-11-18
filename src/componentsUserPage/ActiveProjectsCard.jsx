@@ -44,15 +44,15 @@ function ActiveProjectsCard({ projects, onStatusChange, onEditProject }) {
               </p>
               <p className="mb-2 text-slate-900">
                 <strong className="text-slate-800">Total Cost:</strong> $
-                {project.totalCost}
+                {project.cost}
               </p>
               <p className="mb-2 text-slate-900">
                 <strong className="text-slate-800">Due Date:</strong>{" "}
-                {project.plannedDueDate}
+                {project.time_frame}
               </p>
               <p className="mb-2 text-slate-900">
                 <strong className="text-slate-800">Items Needed:</strong>{" "}
-                {project.itemsNeeded}
+                {project.items}
               </p>
               <button
                 onClick={() => onEditProject(project.id)}

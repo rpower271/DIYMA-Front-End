@@ -4,10 +4,10 @@ function EditProjectsCard({ project, onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: project.title,
     description: project.description,
-    totalCost: project.totalCost,
-    plannedDueDate: project.plannedDueDate,
-    itemsNeeded: project.itemsNeeded,
-    status: project.status,
+    cost: project.totalCost,
+    time_frame: project.time_frame,
+    items: project.items,
+    projectStatus: project.status,
   });
 
   function handleSubmit(e) {
