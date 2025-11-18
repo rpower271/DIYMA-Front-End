@@ -34,7 +34,7 @@ function UserPage() {
 
     const fetchData = async () => {
       try {
-        const userData = await request("/users/me", { method: "GET" });
+        const userData = await request("/users/userId", { method: "GET" });
         setUser(userData);
 
         const projectsData = await request("/projects", { method: "GET" });
