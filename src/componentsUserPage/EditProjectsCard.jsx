@@ -79,7 +79,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
                 type="number"
                 step="0.01"
                 min="0"
-                value={formData.totalCost}
+                value={formData.cost}
                 onChange={handleChange}
                 placeholder="0.00"
                 className="bg-white block w-full border-2 border-slate-800 p-2"
@@ -94,7 +94,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
               <input
                 name="plannedDueDate"
                 type="date"
-                value={formData.plannedDueDate}
+                value={formData.time_frame}
                 onChange={handleChange}
                 className="bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
@@ -108,7 +108,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
             </label>
             <textarea
               name="itemsNeeded"
-              value={formData.itemsNeeded}
+              value={formData.items}
               onChange={handleChange}
               placeholder="List items needed for this project..."
               rows="4"
@@ -123,7 +123,7 @@ function EditProjectsCard({ project, onSave, onCancel }) {
             </label>
             <select
               name="status"
-              value={formData.status}
+              value={formData.projectStatus}
               onChange={handleChange}
               className="bg-white block w-full border-2 border-slate-800 p-2"
               style={{ maxWidth: "100%" }}
