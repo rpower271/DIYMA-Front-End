@@ -9,7 +9,7 @@ function Ideas() {
       </h1>
 
       <ul className="flex flex-col items-center w-full">
-        {listOfIdeas.map((idea) => (
+        {listOfIdeas.map((idea) => ( 
           <Idea key={idea.id} idea={idea} />
         ))}
       </ul>
