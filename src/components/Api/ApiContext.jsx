@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 import { useAuth } from "../Auth/AuthContext";
 
@@ -11,16 +11,20 @@ export function ApiProvider({ children }) {
   const headers = { "Content-Type": "application/json" };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
-  const request = async (resource, options) => {
-    const response = await fetch(API + resource, {
-      ...options,
-      headers,
-    });
-    const isJson = /json/.test(response.headers.get("Content-Type"));
-    const result = isJson ? await response.json() : undefined;
-    if (!response.ok) throw Error(result?.message ?? "Something went wrong :(");
-    return result;
-  };
+  const request = useCallback(
+    async (resource, options) => {
+      const response = await fetch(API + resource, {
+        ...options,
+        headers,
+      });
+      const isJson = /json/.test(response.headers.get("Content-Type"));
+      const result = isJson ? await response.json() : undefined;
+      if (!response.ok)
+        throw Error(result?.message ?? "Something went wrong :(");
+      return result;
+    },
+    [token]
+  );
 
   const [tags, setTags] = useState({});
 

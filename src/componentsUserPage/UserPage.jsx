@@ -58,7 +58,7 @@ function UserPage() {
     };
 
     fetchData();
-  }, [token, navigate, logout]);
+  }, [token, navigate, logout, request]);
 
   function handleEditAccount() {
     setEditAccount(true);
