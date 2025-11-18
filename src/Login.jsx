@@ -1,47 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { useAuth } from "./components/Auth/AuthContext";
 
-function Login({ setToken, token }) {
-  const [userData, setUserData] = useState({});
+function Login() {
+  const [error, setError] = useState();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const tryLogin = async (formData) => {
+    setError(null);
 
-    if (userData.password && userData.username) {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API}/users/login`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Login failed");
-        }
-
-        const data = await response.json();
-        console.log(data);
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-      } catch (err) {
-        console.log(err);
-      }
+    const username = formData.get("username");
+    const password = formData.get("password");
+    try {
+      await login({ username, password });
+      navigate("/UserPage");
+    } catch (err) {
+      setError(err.message);
     }
   };
-
-  const handleInput = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
-  };
-
-  if (token) {
-    navigate("/account");
-  }
 
   return (
     <div>
@@ -50,13 +27,13 @@ function Login({ setToken, token }) {
       </h1>
       <div className="min-h-screen  flex items-start justify-center p-4">
         <div className="bg-white border-2 rounded-xl shadow-md p-6 mb-6 border-white p-8 w-full max-w-md">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={tryLogin}>
             <div className="mb-4">
               <label className="block mb-2 font-semibold text-slate-900">
                 Username:
               </label>
               <input
-                type="username"
+                type="text"
                 name="username"
                 onChange={handleInput}
                 className=" bg-white block w-full border-2 border-slate-800 p-2"
@@ -85,6 +62,7 @@ function Login({ setToken, token }) {
             >
               Login
             </button>
+            {error && <p role="alert">*{error}*</p>}
 
             <p className="text-center text-slate-900">
               Don't have an account?{" "}
