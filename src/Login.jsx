@@ -12,7 +12,7 @@ function Login({ setToken, token }) {
     if (userData.password && userData.email) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API}/api/users/login`,
+          `${import.meta.env.VITE_API}/users/login`,
           {
             method: "POST",
             headers: {
