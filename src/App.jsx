@@ -8,6 +8,7 @@ import ForumPage from "./components/Forum/ForumPage";
 import IdeaProjects from "./components/IdeaProjects/IdeaProjects";
 import Register from "./components/Auth/Register";
 import Login from "./Login";
+import IdeasDetails from "./components/IdeasDetails/IdeasDetails";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="/UserPage" element={<UserPage />} />
           <Route path="ideas" element={<IdeaProjects />} />
+          <Route path="ideas/:id" element={<IdeasDetails />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
