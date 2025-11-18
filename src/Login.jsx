@@ -35,7 +35,6 @@ function Login() {
               <input
                 type="text"
                 name="username"
-                onChange={handleInput}
                 className=" bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
                 required
@@ -49,7 +48,6 @@ function Login() {
               <input
                 type="password"
                 name="password"
-                onChange={handleInput}
                 className="bg-white block w-full border-2 border-slate-800 p-2"
                 style={{ maxWidth: "100%" }}
                 required
