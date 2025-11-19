@@ -47,7 +47,7 @@ function ThreadCard({ thread, currentUser, isAuthenticated }) {
         <div className="mt-6 pt-6 border-t border-gray-200">
           <h3 className="font-semibold text-gray-800 mb-4">Replies</h3>
           <div className="space-y-4 mb-4">
-            {thread.replies.map((reply) => (
+            {thread.replies?.map((reply) => (
               <div key={reply.id} className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center text-sm text-gray-600 mb-2">
                   <span className="mr-1">👤</span>
