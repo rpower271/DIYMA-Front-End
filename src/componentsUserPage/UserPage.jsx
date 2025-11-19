@@ -188,12 +188,14 @@ function UserPage() {
 
       await request(`/users/projects/${projectId}`, {
         method: "PATCH",
-        body: JSON.stringify({ status: newStatus }),
+        body: JSON.stringify({ projectStatus: newStatus }),
       });
 
       setProjects((prev) =>
         prev.map((project) =>
-          project.id === projectId ? { ...project, status: newStatus } : project
+          project.id === projectId
+            ? { ...project, projectStatus: newStatus }
+            : project
         )
       );
     } catch (error) {
