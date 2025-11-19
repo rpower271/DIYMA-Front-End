@@ -40,6 +40,8 @@ function UserPage() {
         const projectsData = await request("/users/projects", {
           method: "GET",
         });
+        console.log("Projects from API:", projectsData);
+        console.log("First project:", projectsData[0]);
         setProjects(projectsData);
       } catch (error) {
         console.error("Error fetching data:", error);
