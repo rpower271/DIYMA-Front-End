@@ -40,9 +40,11 @@ function UserPage() {
         const projectsData = await request("/users/projects", {
           method: "GET",
         });
-        console.log("Projects from API:", projectsData);
-        console.log("First project:", projectsData[0]);
-        setProjects(projectsData);
+        const projectsWithStatus = projectsData.map((project) => ({
+          ...project,
+          projectStatus: project.projectStatus || "Not Started",
+        }));
+        setProjects(projectsWithStatus);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(error.message);
@@ -173,38 +175,61 @@ function UserPage() {
     setEditProject(null);
   }
 
-  async function handleStatusChange(projectId) {
-    try {
-      const project = projects.find((project) => project.id === projectId);
+  function handleStatusChange(projectId) {
+    const project = projects.find((p) => p.id === projectId);
 
-      let newStatus;
-      if (project.projectStatus === "Not Started") {
-        newStatus = "In Progress";
-      } else if (project.projectStatus === "In Progress") {
-        newStatus = "Completed";
-      } else if (project.projectStatus === "Completed") {
-        newStatus = "On Hold";
-      } else {
-        newStatus = "Not Started";
-      }
-
-      await request(`/users/projects/${projectId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ projectStatus: newStatus }),
-      });
-
-      setProjects((prev) =>
-        prev.map((project) =>
-          project.id === projectId
-            ? { ...project, projectStatus: newStatus }
-            : project
-        )
-      );
-    } catch (error) {
-      console.error("Error updating status:", error);
-      alert(`Failed to update status: ${error.message}`);
+    let newStatus;
+    if (project.projectStatus === "Not Started") {
+      newStatus = "In Progress";
+    } else if (project.projectStatus === "In Progress") {
+      newStatus = "Completed";
+    } else if (project.projectStatus === "Completed") {
+      newStatus = "On Hold";
+    } else {
+      newStatus = "Not Started";
     }
+
+    setProjects((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? { ...project, projectStatus: newStatus }
+          : project
+      )
+    );
   }
+  // Commented out to work on later//
+  // async function handleStatusChange(projectId) {
+  //   try {
+  //     const project = projects.find((project) => project.id === projectId);
+
+  //     let newStatus;
+  //     if (project.projectStatus === "Not Started") {
+  //       newStatus = "In Progress";
+  //     } else if (project.projectStatus === "In Progress") {
+  //       newStatus = "Completed";
+  //     } else if (project.projectStatus === "Completed") {
+  //       newStatus = "On Hold";
+  //     } else {
+  //       newStatus = "Not Started";
+  //     }
+
+  //     await request(`/users/projects/${projectId}`, {
+  //       method: "PATCH",
+  //       body: JSON.stringify({ projectStatus: newStatus }),
+  //     });
+
+  //     setProjects((prev) =>
+  //       prev.map((project) =>
+  //         project.id === projectId
+  //           ? { ...project, projectStatus: newStatus }
+  //           : project
+  //       )
+  //     );
+  //   } catch (error) {
+  //     console.error("Error updating status:", error);
+  //     alert(`Failed to update status: ${error.message}`);
+  //   }
+  // }
   const projectToEdit = editProject
     ? projects.find((project) => project.id === editProject)
     : null;
