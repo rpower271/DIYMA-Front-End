@@ -42,7 +42,7 @@ function NewThreadForm({ currentUser, onCancel }) {
         placeholder="Thread title..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-xl mx-auto"
+        className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-xl mx-auto"
       />
       <textarea
         placeholder="What's on your mind?"
