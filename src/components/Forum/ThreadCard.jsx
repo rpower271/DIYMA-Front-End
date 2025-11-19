@@ -87,7 +87,7 @@ function ThreadCard({ thread, currentUser, isAuthenticated }) {
             </div>
           ) : (
             <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg text-center">
-              Please log in to reply to this thread.
+              <Link to="/login">Please log in to reply to this thread.</Link>
             </div>
           )}
         </div>

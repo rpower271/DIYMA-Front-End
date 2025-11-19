@@ -8,7 +8,6 @@ function IdeasDetails() {
   if (!idea) {
     return <p>Idea not found.</p>;
   }
-  console.log("Idea coverimage:", idea.coverimage);
 
   return (
     <article className="min-h-screen flex flex-col max-w-6xl mx-auto p-10">
