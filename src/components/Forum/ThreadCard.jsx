@@ -40,7 +40,7 @@ function ThreadCard({ thread, currentUser, isAuthenticated }) {
         className="flex items-center text-gray-600 hover:text-blue-600 transition"
       >
         <span className="mr-1">💬</span>
-        <span>{thread.replies.length} Replies</span>
+        <span>{thread.replies?.length ?? 0} Replies</span>
       </button>
 
       {showReplies && (
